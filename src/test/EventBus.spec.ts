@@ -2,9 +2,7 @@ import {EventBus} from '../ts/EventBus';
 import {Event} from '../ts/Event';
 
 describe('Event Tests', () => {
-    class SyncEvent extends Event<number> {
-        name: string = 'SyncEvent';
-    }
+    class SyncEvent extends Event<number> {}
 
     class Activity {
         constructor() {

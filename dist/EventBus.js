@@ -15,9 +15,10 @@ class EventBus {
     post(event) {
         for (let i = this.observers.length; i--;) {
             let observer = this.observers[i];
-            let handler = 'on' + event.getName();
+            let handler = 'on' + event.constructor.name;
+            let data = event.getData();
             if (typeof observer[handler] === 'function') {
-                observer[handler].call(observer, event.getData());
+                observer[handler].call(observer, data);
             }
         }
     }
