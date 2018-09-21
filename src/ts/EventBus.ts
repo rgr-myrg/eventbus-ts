@@ -22,7 +22,7 @@ export class EventBus {
             if (typeof observer[handler] === 'function') {
                 observer[handler].call(observer, event.getData());
             }
-		}
+        }
     }
 
     public static getDefault() {
