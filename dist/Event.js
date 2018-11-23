@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Event {
-    constructor(data) {
+var Event = /** @class */ (function () {
+    function Event(data) {
         this.data = data;
     }
-    getData() {
+    Event.prototype.getData = function () {
         return this.data;
-    }
-    typeof() {
+    };
+    Event.prototype.typeof = function () {
         return typeof this.data;
-    }
-}
+    };
+    return Event;
+}());
 exports.Event = Event;
 //# sourceMappingURL=Event.js.map
