@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Event_1 = require("./Event");
 var EventBus = /** @class */ (function () {
     function EventBus() {
         this.observers = [];
@@ -25,6 +26,7 @@ var EventBus = /** @class */ (function () {
     EventBus.getDefault = function () {
         return this.instance || (this.instance = new this());
     };
+    EventBus.Event = Event_1.Event;
     return EventBus;
 }());
 exports.EventBus = EventBus;

@@ -2,6 +2,8 @@ import {Event} from './Event';
 
 export class EventBus {
     private static instance: EventBus;
+    public static Event = Event;
+
     observers: any[] = [];
 
     public register(observer: any): void {

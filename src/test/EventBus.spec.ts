@@ -1,7 +1,8 @@
-import {EventBus, Event, Subscribe} from '../ts/index';
+import {EventBus, Subscribe} from '../ts/index';
 
 describe('Event Tests', () => {
-    class SyncEvent extends Event<number> {}
+    //class SyncEvent extends Event<number> {}
+    class SyncEvent extends EventBus.Event<number> {}
 
     class Activity {
         constructor() {

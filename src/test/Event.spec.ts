@@ -1,7 +1,7 @@
-import {Event} from '../ts/Event';
+import {EventBus} from '../ts/EventBus';
 
 describe('Event Tests', () => {
-    class SyncEvent extends Event<number> {}
+    class SyncEvent extends EventBus.Event<number> {}
 
     let event: SyncEvent;
 

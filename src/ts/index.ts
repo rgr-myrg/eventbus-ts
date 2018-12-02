@@ -1,5 +1,4 @@
 export {EventBus} from './EventBus';
-export {Event} from './Event';
 
 export function Subscribe(eventClassName: string) {
 
