@@ -1,10 +1,11 @@
 import {EventBus, Subscribe} from '../ts/index';
 
 describe('Event Tests', () => {
-    //class SyncEvent extends Event<number> {}
     class SyncEvent extends EventBus.Event<number> {}
+    class DataEvent extends EventBus.Event<string> {}
 
     class Activity {
+        data!: string;
         constructor() {
             EventBus.getDefault().register(this);
         }
@@ -15,6 +16,11 @@ describe('Event Tests', () => {
         @Subscribe('SyncEvent')
         onEvent(data: number): void {
             this.onSyncEvent(data);
+        }
+
+        @Subscribe('DataEvent')
+        onDataEvent(data: string): void {
+            this.data = data;
         }
     }
 
@@ -51,5 +57,10 @@ describe('Event Tests', () => {
     it('post should propagate the event data', () => {
         EventBus.getDefault().post(new SyncEvent(123123));
         expect(activity.onSyncEvent).toHaveBeenCalledWith(123123);
+    });
+
+    it('post DataEvent should propagate the data', () => {
+        EventBus.getDefault().post(new DataEvent('testData'));
+        expect(activity.data).toEqual('testData');
     });
 });

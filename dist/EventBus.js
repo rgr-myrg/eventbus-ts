@@ -13,14 +13,31 @@ var EventBus = /** @class */ (function () {
     EventBus.prototype.unregister = function (observer) {
         this.observers = this.observers.filter(function (item) { return item !== observer; });
     };
+    // public post(event: Event<any>): void {
+    //     for (let i = this.observers.length; i--;) {
+    //         let observer: any = this.observers[i];
+    //         let handler: string = '__on' + event.constructor.name;
+    //         let data: any = event.getData();
+    //
+    //         if (typeof observer[handler] === 'function') {
+    //             observer[handler].call(observer, data);
+    //         }
+    //     }
+    // }
     EventBus.prototype.post = function (event) {
-        for (var i = this.observers.length; i--;) {
-            var observer = this.observers[i];
-            var handler = '__on' + event.constructor.name;
+        var _loop_1 = function (i) {
+            var observer = this_1.observers[i];
             var data = event.getData();
-            if (typeof observer[handler] === 'function') {
-                observer[handler].call(observer, data);
+            if (observer.__eventbus && observer.__eventbus[event.constructor.name]) {
+                var eventHandlers = observer.__eventbus[event.constructor.name];
+                eventHandlers.forEach(function (item) {
+                    item.call(observer, data);
+                });
             }
+        };
+        var this_1 = this;
+        for (var i = this.observers.length; i--;) {
+            _loop_1(i);
         }
     };
     EventBus.getDefault = function () {
