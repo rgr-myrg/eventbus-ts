@@ -1,5 +1,4 @@
-import {EventBus} from '../ts/EventBus';
-import {Event} from '../ts/Event';
+import {EventBus, Event, Subscribe} from '../ts/index';
 
 describe('Event Tests', () => {
     class SyncEvent extends Event<number> {}
@@ -8,7 +7,13 @@ describe('Event Tests', () => {
         constructor() {
             EventBus.getDefault().register(this);
         }
+
         onSyncEvent(data: number): void {
+        }
+
+        @Subscribe('SyncEvent')
+        onEvent(data: number): void {
+            this.onSyncEvent(data);
         }
     }
 

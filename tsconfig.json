@@ -9,7 +9,8 @@
 		"declaration": true,
 		"strict": true,
 		"outDir": "./dist",
-		"lib": ["es6"]
+		"lib": ["es6", "dom"],
+		"experimentalDecorators": true
 	},
 	"files": [
 		"./src/ts/index.ts"

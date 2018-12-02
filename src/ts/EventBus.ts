@@ -17,7 +17,7 @@ export class EventBus {
     public post(event: Event<any>): void {
         for (let i = this.observers.length; i--;) {
             let observer: any = this.observers[i];
-            let handler: string = 'on' + event.constructor.name;
+            let handler: string = '__on' + event.constructor.name;
             let data: any = event.getData();
 
             if (typeof observer[handler] === 'function') {

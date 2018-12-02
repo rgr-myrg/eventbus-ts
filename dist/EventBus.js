@@ -15,7 +15,7 @@ var EventBus = /** @class */ (function () {
     EventBus.prototype.post = function (event) {
         for (var i = this.observers.length; i--;) {
             var observer = this.observers[i];
-            var handler = 'on' + event.constructor.name;
+            var handler = '__on' + event.constructor.name;
             var data = event.getData();
             if (typeof observer[handler] === 'function') {
                 observer[handler].call(observer, data);
