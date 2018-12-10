@@ -73,6 +73,14 @@ EventBus.getDefault().post(new DataEvent('sync up!'));
 EventBus.getDefault().post(new NumEvent(299792458));
 ```
 
+### Event Indexing and UglifyJs
+
+Be sure to tell UglifyJs to exclude your Events from mangling. EventBus will index event handlers using the original unmangled classname. For example use 'reserved' and list your events: 
+
+```typescript
+uglifyjs source.js -c -m reserved=['TrackEvent'] -o source.min.js
+```
+
 # License
 
 [MIT License](https://raw.githubusercontent.com/rgr-myrg/eventbus-ts/master/LICENSE)
